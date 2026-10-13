@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Kassenzo Rovié, maison afro-europea de moda y accesorios premium. Europa en la forma, África en el alma.">
+<title>Kassenzo Rovié</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap">
+<style>
+/* Layout: maison editorial — spaced wordmark, ruled "carnet" grids for the shop, gold hairlines as the only ornament; the one bold gesture is the wax-motif band of Teranga */
+:root {
+  --bg: #14161a;          /* noir encre */
+  --surface: #1c1f25;
+  --surface-2: #23262d;
+  --fg: #ecebe6;
+  --fg-muted: #a3a49f;
+  --gold: #b8975a;        /* oro viejo del símbolo */
+  --gold-soft: #8a7448;
+  --line: rgba(184,151,90,.30);
+  --danger: #d08a7c;
+  --f-display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --f-caps: "Marcellus", "Trajan Pro", Georgia, serif;
+  --f-body: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f1f0eb; --surface: #e7e5de; --surface-2: #dcd9d0; --fg: #17191d; --fg-muted: #5b5d61;
+    --gold: #8b6d36; --gold-soft: #a8894f; --line: rgba(139,109,54,.32); --danger: #9b3e2f; color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f1f0eb; --surface: #e7e5de; --surface-2: #dcd9d0; --fg: #17191d; --fg-muted: #5b5d61;
+  --gold: #8b6d36; --gold-soft: #a8894f; --line: rgba(139,109,54,.32); --danger: #9b3e2f; color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; }
+img, svg { max-width: 100%; }
+[hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+body { background: var(--bg); color: var(--fg); font-family: var(--f-body); font-weight: 300; font-size: 1rem; line-height: 1.65; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 1px solid var(--gold); outline-offset: 3px; }
+.wrap { max-width: 1200px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); }
+.caps { font-family: var(--f-caps); text-transform: uppercase; letter-spacing: .32em; font-size: .72rem; color: var(--gold); margin: 0; }
+h1, h2, h3, h4 { font-family: var(--f-display); font-weight: 400; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.2rem, 5.5vw, 4rem); line-height: 1.05; }
+h2 { font-size: clamp(1.9rem, 4.2vw, 3rem); line-height: 1.08; }
+h3 { font-size: 1.3rem; line-height: 1.25; }
+h4 { font-size: 1.1rem; }
+p { margin: 0; }
+.lede { max-width: 62ch; color: var(--fg-muted); font-size: 1.05rem; }
+.muted { color: var(--fg-muted); }
+.rule { height: 1px; background: var(--line); border: 0; margin: 0; }
+.stack { display: grid; gap: 18px; }
+.prose { display: grid; gap: 16px; max-width: 64ch; color: var(--fg-muted); }
+.prose h3 { color: var(--fg); margin-top: 14px; }
+.prose strong { color: var(--fg); font-weight: 500; }
+
+/* Announcement + header */
+.announce { background: var(--gold); color: var(--bg); text-align: center; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; padding: 8px 16px; }
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; padding-block: 12px; }
+.brand { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; }
+.brand .wm { font-family: var(--f-caps); letter-spacing: .34em; font-size: .92rem; margin-right: -.34em; white-space: nowrap; }
+nav.main { display: flex; gap: clamp(12px, 2vw, 28px); flex-wrap: wrap; }
+nav.main a, .tools button, .tools a { font-family: var(--f-caps); text-transform: uppercase; letter-spacing: .2em; font-size: .66rem; text-decoration: none; color: var(--fg-muted); background: none; border: 0; cursor: pointer; padding: 6px 0; transition: color .2s; }
+nav.main a:hover, nav.main a[aria-current="page"], .tools button:hover, .tools a:hover { color: var(--gold); }
+.tools { display: flex; justify-content: flex-end; gap: 18px; align-items: center; }
+.count { display: inline-grid; place-items: center; min-width: 1.5em; height: 1.5em; margin-left: 4px; border: 1px solid var(--gold); color: var(--gold); border-radius: 50%; font-size: .62rem; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+.menu-btn { display: none; }
+@media (max-width: 860px) {
+  .top .wrap { grid-template-columns: auto 1fr auto; }
+  .brand { align-items: flex-start; }
+  .brand .wm { font-size: .78rem; }
+  nav.main { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--line); padding: 16px; flex-direction: column; gap: 6px; }
+  nav.main.open { display: flex; }
+  nav.main a { font-size: .74rem; padding: 10px 0; }
+  .menu-btn { display: inline-block; order: -1; }
+  .tools .opt { display: none; }
+}
+
+/* KR monogram */
+.kr { display: inline-flex; flex-direction: column; align-items: center; color: var(--gold); }
+.kr i { display: block; width: 100%; height: 1px; background: currentColor; }
+.kr b { font-family: var(--f-display); font-style: italic; font-weight: 400; line-height: 1; letter-spacing: -.12em; padding: .12em .2em .08em 0; }
+.kr b em { font-style: italic; margin-left: -.18em; }
+
+/* Buttons */
+.btn { display: inline-block; font-family: var(--f-caps); text-transform: uppercase; letter-spacing: .24em; font-size: .7rem; padding: 15px 28px; border: 1px solid var(--gold); color: var(--fg); text-decoration: none; background: transparent; cursor: pointer; transition: background .25s, color .25s; text-align: center; }
+.btn:hover, .btn.solid { background: var(--gold); color: var(--bg); }
+.btn.solid:hover { background: transparent; color: var(--fg); }
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+.link { font-family: var(--f-caps); text-transform: uppercase; letter-spacing: .22em; font-size: .68rem; color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 3px; }
+.link:hover { border-color: var(--gold); }
+
+/* Views */
+main section.view { padding-block: 0 clamp(56px, 8vw, 96px); }
+.block { padding-block: clamp(56px, 8vw, 104px); }
+.head-split { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: end; margin-bottom: clamp(32px, 5vw, 52px); }
+.two { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(28px, 6vw, 80px); }
+.two > * { min-width: 0; }
+@media (max-width: 820px) { .head-split, .two { grid-template-columns: 1fr; } }
+.page-head { padding-block: clamp(48px, 7vw, 88px) clamp(28px, 4vw, 48px); display: grid; gap: 16px; }
+.crumbs { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--fg-muted); }
+.crumbs a { text-decoration: none; }
+.crumbs a:hover { color: var(--gold); }
+
+/* Hero */
+.hero { padding-block: clamp(56px, 9vw, 112px) clamp(44px, 7vw, 88px); text-align: center; display: grid; gap: 26px; justify-items: center; }
+.wordmark { font-family: var(--f-caps); font-weight: 400; font-size: clamp(1.8rem, 7.2vw, 5.6rem); letter-spacing: .26em; line-height: 1; margin-right: -.26em; }
+.hero .kr { width: clamp(64px, 8vw, 92px); }
+.hero .kr b { font-size: clamp(2rem, 4vw, 2.8rem); }
+.motto { font-family: var(--f-display); font-style: italic; font-size: clamp(1.25rem, 2.6vw, 1.75rem); }
+.motto span { color: var(--gold); }
+.cta-row { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+.split-cats { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.split-cats a { display: grid; gap: 14px; padding: clamp(28px, 5vw, 56px) clamp(16px, 4vw, 48px); text-decoration: none; transition: background .3s; min-width: 0; }
+.split-cats a + a { border-left: 1px solid var(--line); }
+.split-cats a:hover { background: var(--surface); }
+.split-cats .plate { aspect-ratio: 16 / 10; }
+@media (max-width: 680px) { .split-cats { grid-template-columns: 1fr; } .split-cats a + a { border-left: 0; border-top: 1px solid var(--line); } }
+
+/* Product grid */
+.toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chips button { font-family: var(--f-caps); text-transform: uppercase; letter-spacing: .2em; font-size: .64rem; padding: 9px 14px; background: transparent; color: var(--fg-muted); border: 1px solid var(--line); cursor: pointer; }
+.chips button[aria-pressed="true"] { color: var(--bg); background: var(--gold); border-color: var(--gold); }
+.sort { display: flex; gap: 8px; align-items: center; font-size: .78rem; color: var(--fg-muted); }
+.sort select { font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line); padding: 7px 10px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.card { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 18px 18px 22px; display: grid; gap: 12px; align-content: start; min-width: 0; text-decoration: none; transition: background .25s; }
+.card:hover { background: var(--surface); }
+.card .meta { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.card h3 { font-size: 1.12rem; }
+.card .sub { color: var(--fg-muted); font-size: .84rem; }
+.price { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 400; }
+.swatches { display: flex; gap: 6px; }
+.sw { width: 12px; height: 12px; border-radius: 50%; border: 1px solid var(--line); }
+
+/* Plates (product illustrations) */
+.plate { position: relative; background: var(--surface); display: grid; place-items: center; aspect-ratio: 4 / 5; max-width: 100%; overflow: hidden; }
+.plate svg { width: 60%; height: auto; }
+.plate svg .s { stroke: rgba(0,0,0,.35); stroke-width: 1; }
+.plate svg .d { fill: none; stroke: rgba(0,0,0,.4); stroke-width: 1; }
+.plate svg .g { fill: none; stroke: #c8a865; stroke-width: 1.4; }
+.plate svg .gt { fill: #c8a865; }
+.plate .ref { position: absolute; top: 10px; left: 12px; font-size: .62rem; letter-spacing: .18em; color: var(--fg-muted); font-variant-numeric: tabular-nums; }
+.plate .badge { position: absolute; top: 10px; right: 12px; font-family: var(--f-caps); font-size: .58rem; letter-spacing: .22em; color: var(--gold); text-transform: uppercase; }
+
+/* Product detail */
+.pdp { display: grid; grid-template-columns: 7fr 5fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
+.pdp > * { min-width: 0; }
+.pdp .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.pdp .gallery .plate:first-child { grid-column: 1 / -1; aspect-ratio: 5 / 4; }
+.pdp .gallery .plate { aspect-ratio: 1; }
+.pdp .gallery .detail-note { font-family: var(--f-display); font-style: italic; color: var(--fg-muted); padding: 16px; text-align: center; font-size: 1.05rem; }
+.pdp .info { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 96px); display: grid; gap: 22px; }
+.pdp .price { font-size: 1.25rem; }
+.opt-label { font-family: var(--f-caps); text-transform: uppercase; letter-spacing: .22em; font-size: .64rem; color: var(--fg-muted); display: flex; justify-content: space-between; gap: 12px; }
+.color-opts, .size-opts { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.color-opts button { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid var(--line); background: transparent; cursor: pointer; font-size: .82rem; }
+.color-opts button[aria-pressed="true"], .size-opts button[aria-pressed="true"] { border-color: var(--gold); color: var(--gold); }
+.size-opts button { min-width: 48px; padding: 10px 8px; border: 1px solid var(--line); background: transparent; cursor: pointer; font-size: .82rem; font-variant-numeric: tabular-nums; }
+.size-opts button:hover { border-color: var(--gold-soft); }
+details.acc { border-top: 1px solid var(--line); padding-block: 14px; }
+details.acc:last-of-type { border-bottom: 1px solid var(--line); }
+details.acc summary { cursor: pointer; list-style: none; font-family: var(--f-caps); text-transform: uppercase; letter-spacing: .22em; font-size: .68rem; display: flex; justify-content: space-between; }
+details.acc summary::after { content: "+"; color: var(--gold); }
+details.acc[open] summary::after { content: "–"; }
+details.acc summary::-webkit-details-marker { display: none; }
+details.acc .in { padding-top: 12px; color: var(--fg-muted); font-size: .92rem; display: grid; gap: 8px; }
+.facts { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; font-size: .9rem; }
+.facts dt { color: var(--fg-muted); }
+.facts dd { margin: 0; }
+.msg { font-size: .9rem; color: var(--gold); min-height: 1.4em; }
+.msg.err { color: var(--danger); }
+@media (max-width: 900px) { .pdp { grid-template-columns: 1fr; } .pdp .info { position: static; } }
+
+/* Divisions */
+.divisions { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); border-top: 1px solid var(--line); }
+.div-row { display: grid; grid-template-columns: 3rem 1fr auto; gap: 14px; align-items: baseline; padding: 18px 4px; border-bottom: 1px solid var(--line); }
+.div-row .n { font-family: var(--f-display); font-style: italic; color: var(--gold); font-size: 1.1rem; }
+.div-row small { display: block; color: var(--fg-muted); font-size: .84rem; margin-top: 2px; }
+.pill { font-family: var(--f-caps); font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; padding: 5px 10px; border: 1px solid var(--line); color: var(--fg-muted); white-space: nowrap; }
+.pill.now { border-color: var(--gold); color: var(--gold); }
+@media (min-width: 861px) { .divisions .div-row:nth-child(odd) { border-right: 1px solid var(--line); padding-right: 28px; } .divisions .div-row:nth-child(even) { padding-left: 28px; } }
+
+/* Principles / timeline */
+.principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: clamp(24px, 4vw, 44px); }
+.principle { display: grid; gap: 10px; align-content: start; padding-top: 16px; border-top: 1px solid var(--gold); }
+.principle p { color: var(--fg-muted); font-size: .94rem; }
+.tinted { background: var(--surface); }
+.timeline { display: grid; border-top: 1px solid var(--line); }
+.tl { display: grid; grid-template-columns: 7rem 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.tl b { font-family: var(--f-display); font-weight: 400; color: var(--gold); font-size: 1.1rem; }
+.tl p { color: var(--fg-muted); }
+@media (max-width: 520px) { .tl { grid-template-columns: 1fr; gap: 4px; } }
+
+/* Teranga band — wax motif */
+.wax { position: relative; isolation: isolate; border-block: 1px solid var(--line); }
+.wax::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .16;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 9px, var(--gold) 10px, var(--gold) 11px, transparent 12px) 0 0 / 44px 44px,
+    radial-gradient(circle at 50% 50%, var(--gold) 3px, transparent 4px) 0 0 / 44px 44px,
+    radial-gradient(circle at 50% 50%, transparent 15px, var(--gold) 16px, transparent 17px) 22px 22px / 44px 44px; }
+.big-num { font-family: var(--f-display); font-size: clamp(4rem, 12vw, 8rem); line-height: .9; color: var(--gold); font-variant-numeric: tabular-nums; }
+.wax em { font-family: var(--f-display); color: var(--gold); }
+
+/* Tables */
+.tbl-wrap { overflow-x: auto; border: 1px solid var(--line); }
+table { border-collapse: collapse; width: 100%; font-size: .9rem; min-width: 520px; }
+th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+th { font-family: var(--f-caps); text-transform: uppercase; letter-spacing: .18em; font-size: .62rem; color: var(--gold); font-weight: 400; background: var(--surface); }
+tr:last-child td { border-bottom: 0; }
+
+/* Forms */
+form.f { display: grid; gap: 18px; }
+.field { display: grid; gap: 6px; }
+.field label { font-family: var(--f-caps); font-size: .62rem; letter-spacing: .24em; text-transform: uppercase; color: var(--fg-muted); }
+.field input, .field select, .field textarea { font: inherit; font-weight: 400; color: var(--fg); background: transparent; border: 0; border-bottom: 1px solid var(--line); padding: 10px 0; border-radius: 0; }
+.field textarea { min-height: 110px; resize: vertical; }
+.field select option { background: var(--bg); color: var(--fg); }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-bottom-color: var(--gold); }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 520px) { .row2 { grid-template-columns: 1fr; } }
+.check { display: flex; gap: 10px; align-items: flex-start; font-size: .85rem; color: var(--fg-muted); }
+.check input { margin-top: 4px; accent-color: var(--gold); }
+
+/* Bag */
+.bag-list { display: grid; border-top: 1px solid var(--line); }
+.bag-item { display: grid; grid-template-columns: 88px 1fr auto; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.bag-item .plate { aspect-ratio: 4 / 5; }
+.bag-item .plate svg { width: 70%; }
+.bag-item small { color: var(--fg-muted); display: block; font-size: .82rem; }
+.qty { display: inline-flex; border: 1px solid var(--line); margin-top: 10px; }
+.qty button { width: 32px; height: 30px; background: none; border: 0; cursor: pointer; color: var(--fg); }
+.qty span { min-width: 28px; display: grid; place-items: center; font-variant-numeric: tabular-nums; font-size: .85rem; }
+.rm { background: none; border: 0; color: var(--fg-muted); font-size: .76rem; text-decoration: underline; cursor: pointer; margin-left: 12px; }
+.summary { display: grid; gap: 10px; padding: 22px; background: var(--surface); }
+.summary .ln { display: flex; justify-content: space-between; gap: 12px; font-variant-numeric: tabular-nums; }
+.summary .ln.total { border-top: 1px solid var(--line); padding-top: 12px; font-size: 1.1rem; }
+.notice { border: 1px solid var(--line); padding: 14px 16px; font-size: .86rem; color: var(--fg-muted); }
+
+/* Toast */
+.toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%) translateY(20px); background: var(--fg); color: var(--bg); padding: 12px 20px; font-size: .86rem; opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; z-index: 50; max-width: calc(100% - 32px); }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* Footer */
+footer { border-top: 1px solid var(--line); padding-block: 56px 40px; }
+.foot { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; }
+.foot p, .foot li { color: var(--fg-muted); font-size: .88rem; }
+.foot ul { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 7px; }
+.foot a { text-decoration: none; }
+.foot a:hover { color: var(--gold); }
+.news { display: flex; gap: 0; margin-top: 18px; max-width: 360px; }
+.news input { flex: 1; min-width: 0; font: inherit; color: var(--fg); background: transparent; border: 1px solid var(--line); border-right: 0; padding: 10px 12px; }
+.news button { font-family: var(--f-caps); text-transform: uppercase; letter-spacing: .2em; font-size: .62rem; padding: 0 16px; background: var(--gold); color: var(--bg); border: 1px solid var(--gold); cursor: pointer; }
+.legal-row { margin-top: 44px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: .72rem; letter-spacing: .12em; color: var(--fg-muted); text-transform: uppercase; }
+.legal-row nav { display: flex; gap: 18px; flex-wrap: wrap; }
+.legal-row a { text-decoration: none; }
+@media (max-width: 860px) { .foot { grid-template-columns: 1fr 1fr; } .foot > :first-child { grid-column: 1 / -1; } }
+</style>
+</head>
+<body>
+<div class="announce">Colección I · Pre-order abierto · 3 % de cada venta al Programa Teranga</div>
+<header class="top">
+  <div class="wrap">
+    <nav class="main" id="nav" aria-label="Principal">
+      <a href="#mujer">Mujer</a>
+      <a href="#hombre">Hombre</a>
+      <a href="#maison">Maison</a>
+      <a href="#atelier">Atelier</a>
+      <a href="#teranga">Teranga</a>
+    </nav>
+    <a class="brand" href="#inicio" aria-label="Kassenzo Rovié, inicio">
+      <span class="wm">KASSENZO ROVIÉ</span>
+      <span class="kr" style="width:26px"><i></i><b style="font-size:.85rem">K<em>R</em></b><i></i></span>
+    </a>
+    <div class="tools">
+      <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">Menú</button>
+      <a href="#servicio" class="opt">Ayuda</a>
+      <a href="#bolsa" id="bag-link">Bolsa<span class="count" id="bag-count">0</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="app">
+
+<!-- INICIO -->
+<section class="view" data-view="inicio">
+  <div class="wrap hero">
+    <p class="caps">Maison afro-européenne · Grenade · Dakar</p>
+    <h1 class="wordmark">Kassenzo Rovié</h1>
+    <span class="kr"><i></i><b>K<em>R</em></b><i></i></span>
+    <p class="motto">Europa en la forma, <span>África en el alma.</span></p>
+    <div class="cta-row">
+      <a class="btn solid" href="#mujer">Mujer</a>
+      <a class="btn" href="#hombre">Hombre</a>
+    </div>
+  </div>
+  <div class="split-cats">
+    <a href="#KR-M10"><div class="plate" data-plate="KR-M10"></div><div class="stack" style="gap:6px"><p class="caps">Pieza de la casa · Mujer</p><h3>Mocasín de bocado Rovié</h3><p class="muted">Marrón chocolate, bocado con la firma KR.</p></div></a>
+    <a href="#KR-H10"><div class="plate" data-plate="KR-H10"></div><div class="stack" style="gap:6px"><p class="caps">Pieza de la casa · Hombre</p><h3>Penny loafer Kassenzo</h3><p class="muted">El clásico, limpio, sin herraje.</p></div></a>
+  </div>
+  <div class="wrap block">
+    <div class="head-split">
+      <div class="stack"><p class="caps">Colección I</p><h2>Novedades de la casa.</h2></div>
+      <p class="lede">Veinte piezas, mitad mujer y mitad hombre. Series cortas en pre-order: se fabrican con las reservas y se envían en unas seis semanas.</p>
+    </div>
+    <div class="grid" id="home-grid"></div>
+    <p style="margin-top:28px;display:flex;gap:28px;flex-wrap:wrap"><a class="link" href="#mujer">Ver toda la colección mujer</a><a class="link" href="#hombre">Ver toda la colección hombre</a></p>
+  </div>
+  <div class="wax block">
+    <div class="wrap two">
+      <div class="stack"><p class="caps">Programa Teranga</p><div class="big-num">3 %</div></div>
+      <div class="stack">
+        <h2>De cada venta, a formar oficio en Senegal.</h2>
+        <p class="lede">El 3 % de cada pieza vendida financia la formación de jóvenes en talleres de Dakar: patronaje, confección y trabajo de la piel.</p>
+        <p><a class="link" href="#teranga">Conocer el programa</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="wrap block">
+    <div class="two">
+      <div class="stack"><p class="caps">La maison</p><h2>Dos orillas, un mismo armario.</h2></div>
+      <div class="prose">
+        <p>Kassenzo Rovié nace de una historia familiar entre Senegal y España. La sastrería europea pone la forma; Senegal pone la elegancia, el color y la manera de llevar la ropa.</p>
+        <p>Lo africano no se disfraza en cada prenda. Aparece donde tiene sentido: en el forro de wax de una americana, en un vestido confeccionado en Dakar, en el nombre de los modelos.</p>
+        <p><a class="link" href="#maison">Nuestra historia</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLECCIÓN (mujer / hombre) -->
+<section class="view" data-view="coleccion" hidden>
+  <div class="wrap">
+    <div class="page-head">
+      <p class="crumbs"><a href="#inicio">Inicio</a> / <span id="col-crumb">Mujer</span></p>
+      <h1 id="col-title">Mujer</h1>
+      <p class="lede" id="col-lede"></p>
+    </div>
+    <div class="toolbar">
+      <div class="chips" id="cat-chips" role="group" aria-label="Filtrar por categoría"></div>
+      <label class="sort" for="sort-sel">Ordenar
+        <select id="sort-sel"><option value="dest">Destacados</option><option value="asc">Precio ascendente</option><option value="desc">Precio descendente</option></select>
+      </label>
+    </div>
+    <div class="grid" id="col-grid"></div>
+  </div>
+</section>
+
+<!-- PRODUCTO -->
+<section class="view" data-view="producto" hidden>
+  <div class="wrap">
+    <div class="page-head" style="padding-bottom:28px"><p class="crumbs" id="pdp-crumbs"></p></div>
+    <div class="pdp">
+      <div class="gallery" id="pdp-gallery"></div>
+      <div class="info">
+        <div class="stack" style="gap:8px">
+          <p class="caps" id="pdp-cat"></p>
+          <h1 id="pdp-name" style="font-size:clamp(2rem,4vw,2.8rem)"></h1>
+          <p class="price" id="pdp-price"></p>
+        </div>
+        <p class="muted" id="pdp-desc"></p>
+        <div>
+          <p class="opt-label"><span>Color</span><span id="pdp-color-name"></span></p>
+          <div class="color-opts" id="pdp-colors"></div>
+        </div>
+        <div>
+          <p class="opt-label"><span>Talla</span><a href="#servicio" class="link" style="font-size:.58rem">Guía de tallas</a></p>
+          <div class="size-opts" id="pdp-sizes"></div>
+        </div>
+        <button class="btn solid" type="button" id="pdp-add">Reservar en pre-order</button>
+        <p class="msg" id="pdp-msg" role="status"></p>
+        <div>
+          <details class="acc" open><summary>Composición y origen</summary><div class="in"><dl class="facts" id="pdp-facts"></dl></div></details>
+          <details class="acc"><summary>Detalle de la casa</summary><div class="in" id="pdp-detail"></div></details>
+          <details class="acc"><summary>Cuidados</summary><div class="in" id="pdp-care"></div></details>
+          <details class="acc"><summary>Pre-order y envío</summary><div class="in"><p>Pagas al reservar. La pieza se fabrica con la serie y se envía en unas 6 semanas. Puedes cancelar sin coste hasta que la serie entre en producción.</p><p>Envío gratuito en España a partir de 200 €. Devoluciones en 30 días.</p></div></details>
+        </div>
+      </div>
+    </div>
+    <div class="block" style="padding-bottom:0">
+      <p class="caps" style="margin-bottom:20px">Completa el conjunto</p>
+      <div class="grid" id="pdp-related"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MAISON -->
+<section class="view" data-view="maison" hidden>
+  <div class="wrap">
+    <div class="page-head">
+      <p class="caps">La maison</p>
+      <h1>Europa en la forma, África en el alma.</h1>
+      <p class="lede">Kassenzo Rovié es una maison afro-europea de moda y accesorios premium, con sede en Granada y raíz en Senegal.</p>
+    </div>
+    <div class="two block" style="padding-top:24px">
+      <div class="stack"><p class="caps">Origen</p><h2>Una historia entre Dakar y Granada.</h2></div>
+      <div class="prose">
+        <p>La casa nace de una familia con un pie en cada orilla. En Senegal, vestir bien es una forma de respeto: los domingos, las bodas y las visitas se preparan con la ropa. En Europa, la sastrería clásica enseñó a construir una prenda que dure décadas.</p>
+        <p>Kassenzo Rovié junta las dos cosas. Tomamos los códigos del old money europeo (la camisa bien cortada, la americana sin estridencias, el mocasín) y los vestimos con la manera senegalesa de llevarlos: con color, con orgullo y sin prisa.</p>
+        <p>El nombre no significa nada en ningún idioma. Lo inventamos para que fuera solo nuestro: suena a Italia, se escribe con la doble s y la z, y se abrevia en una firma, la KR, que va en el bocado de nuestros mocasines.</p>
+      </div>
+    </div>
+    <hr class="rule">
+    <div class="block">
+      <div class="head-split">
+        <div class="stack"><p class="caps">Siete divisiones</p><h2>De la camisa a la joaillerie.</h2></div>
+        <p class="lede">Abrimos con ropa y calzado. Las demás divisiones llegan por fases, con pocas referencias y bien resueltas.</p>
+      </div>
+      <div class="divisions">
+        <div class="div-row"><span class="n">i.</span><div><h3>Prêt-à-porter</h3><small>Camisas, polos, americanas, pantalones, vestidos, jerseys</small></div><span class="pill now">Colección I</span></div>
+        <div class="div-row"><span class="n">ii.</span><div><h3>Calzado</h3><small>Mocasín de bocado KR y penny loafer</small></div><span class="pill now">Colección I</span></div>
+        <div class="div-row"><span class="n">iii.</span><div><h3>Cinturones</h3><small>Piel lisa, hebilla con firma KR</small></div><span class="pill">Próximamente</span></div>
+        <div class="div-row"><span class="n">iv.</span><div><h3>Maroquinerie</h3><small>Carteras y pequeña marroquinería, después bolsos</small></div><span class="pill">Próximamente</span></div>
+        <div class="div-row"><span class="n">v.</span><div><h3>Joaillerie</h3><small>Primera colección en colaboración con RE ALZA</small></div><span class="pill">Fase 2</span></div>
+        <div class="div-row"><span class="n">vi.</span><div><h3>Lunettes</h3><small>Gafas de sol y de vista</small></div><span class="pill">Fase 3</span></div>
+        <div class="div-row"><span class="n">vii.</span><div><h3>Horlogerie</h3><small>Relojes</small></div><span class="pill">Fase 3</span></div>
+      </div>
+    </div>
+    <hr class="rule">
+    <div class="block two">
+      <div class="stack"><p class="caps">Hoja de ruta</p><h2>Dónde nos encontrarás.</h2></div>
+      <div class="timeline">
+        <div class="tl"><b>Fase 1</b><p><strong style="color:var(--fg);font-weight:500">España.</strong> Lanzamiento online desde Granada y primeros puntos de venta seleccionados.</p></div>
+        <div class="tl"><b>Fase 2</b><p><strong style="color:var(--fg);font-weight:500">Francia e Italia.</strong> París como escaparate europeo; Italia, cuna de la referencia sastre.</p></div>
+        <div class="tl"><b>Fase 3</b><p><strong style="color:var(--fg);font-weight:500">Marruecos y Senegal, a la vez.</strong> Casablanca y Dakar: África como origen y como mercado.</p></div>
+        <div class="tl"><b>Fase 4</b><p><strong style="color:var(--fg);font-weight:500">Emiratos Árabes Unidos.</strong> Dubái, para el cliente internacional del Golfo.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ATELIER -->
+<section class="view" data-view="atelier" hidden>
+  <div class="wrap">
+    <div class="page-head">
+      <p class="caps">El atelier</p>
+      <h1>Cómo hacemos las cosas.</h1>
+      <p class="lede">Diseñamos en Granada y confeccionamos con talleres especializados de Europa y Senegal. Cada uno hace lo que mejor sabe hacer.</p>
+    </div>
+    <div class="principles block" style="padding-top:24px">
+      <div class="principle"><h3>Series cortas</h3><p>Cada referencia se fabrica en cantidades limitadas. Si se agota, abrimos una nueva serie en pre-order según la demanda.</p></div>
+      <div class="principle"><h3>Dos orillas</h3><p>Piel y calzado en España; camisería en Portugal; americanas en Italia. Vestidos y forros de wax, en talleres de Dakar.</p></div>
+      <div class="principle"><h3>Control en Granada</h3><p>Patrón final, muestras y control de calidad se aprueban en la sede antes de que una pieza salga a la venta.</p></div>
+      <div class="principle"><h3>Hecho para durar</h3><p>Costuras reforzadas, pieles que envejecen bien y suela cosida que se puede cambiar.</p></div>
+    </div>
+    <hr class="rule">
+    <div class="block two">
+      <div class="stack"><p class="caps">Materiales</p><h2>Lo que tocas.</h2></div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Material</th><th>Dónde se usa</th><th>Origen del taller</th></tr></thead>
+          <tbody>
+            <tr><td>Piel de becerro</td><td>Mocasines</td><td>Elche, España</td></tr>
+            <tr><td>Popelín y oxford de algodón</td><td>Camisas</td><td>Guimarães, Portugal</td></tr>
+            <tr><td>Lino</td><td>Camisas, pantalones, vestidos</td><td>Portugal y Dakar</td></tr>
+            <tr><td>Lana fría y lana-lino</td><td>Americanas, pantalones</td><td>Biella, Italia</td></tr>
+            <tr><td>Merino y lambswool</td><td>Jerseys y cárdigan</td><td>Portugal</td></tr>
+            <tr><td>Wax de algodón</td><td>Forros de americanas</td><td>Dakar, Senegal</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <hr class="rule">
+    <div class="block two">
+      <div class="stack"><p class="caps">Servicio de reparación</p><h2>Un mocasín no se tira.</h2></div>
+      <div class="prose">
+        <p>Nuestros mocasines llevan suela cosida. Cuando se gasta, nos los envías y los devolvemos con suela y tacón nuevos.</p>
+        <p><strong>Primer cambio de tapas:</strong> gratuito durante el primer año.</p>
+        <p><strong>Cambio de suela completa:</strong> 75 € con envío incluido en España.</p>
+        <p><a class="link" href="#contacto">Solicitar una reparación</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TERANGA -->
+<section class="view" data-view="teranga" hidden>
+  <div class="wax">
+    <div class="wrap page-head" style="padding-bottom:clamp(48px,7vw,88px)">
+      <p class="caps">Programa Teranga</p>
+      <h1>Lo que compras aquí también se queda en Senegal.</h1>
+      <p class="lede"><em>Teranga</em> es la palabra wolof para la hospitalidad senegalesa: recibir bien y compartir lo que se tiene.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="block two">
+      <div class="stack"><div class="big-num">3 %</div><p class="muted">de cada venta, en todos los países y en todas las piezas.</p></div>
+      <div class="prose">
+        <p>El Programa Teranga destina el 3 % de cada venta a formar en oficio a jóvenes de Dakar, en los mismos talleres que confeccionan para la maison.</p>
+        <p>La formación cubre patronaje, confección y trabajo de la piel. Quien la termina puede seguir trabajando para Kassenzo Rovié o abrir su propio taller.</p>
+        <p>Cada prenda confeccionada en Senegal lleva en la etiqueta interior el nombre del taller que la hizo.</p>
+      </div>
+    </div>
+    <hr class="rule">
+    <div class="block">
+      <p class="caps" style="margin-bottom:24px">Cómo funciona</p>
+      <div class="principles">
+        <div class="principle"><h3>Compras</h3><p>Cualquier pieza de la casa, en cualquier mercado.</p></div>
+        <div class="principle"><h3>Separamos el 3 %</h3><p>Se aparta del importe de la venta, sin coste adicional para ti.</p></div>
+        <div class="principle"><h3>Se forma un oficio</h3><p>Becas de formación en talleres asociados de Dakar.</p></div>
+        <div class="principle"><h3>Te lo contamos</h3><p>Publicamos cada año cuánto se ha destinado y a qué.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO -->
+<section class="view" data-view="servicio" hidden>
+  <div class="wrap">
+    <div class="page-head">
+      <p class="caps">Atención al cliente</p>
+      <h1>Envíos, devoluciones y tallas.</h1>
+    </div>
+    <div class="block two" style="padding-top:24px">
+      <div class="stack"><h2>Envíos</h2><p class="muted">Plazos para piezas en stock. Las piezas en pre-order se envían en unas 6 semanas desde la reserva.</p></div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Destino</th><th>Plazo</th><th>Coste</th><th>Gratis desde</th></tr></thead>
+          <tbody>
+            <tr><td>España (península y Baleares)</td><td>24–72 h</td><td>6 €</td><td>200 €</td></tr>
+            <tr><td>Francia</td><td>3–5 días</td><td>12 €</td><td>300 €</td></tr>
+            <tr><td>Italia</td><td>3–5 días</td><td>12 €</td><td>300 €</td></tr>
+            <tr><td>Marruecos</td><td>4–7 días</td><td>18 €</td><td>400 €</td></tr>
+            <tr><td>Senegal</td><td>5–8 días</td><td>22 €</td><td>400 €</td></tr>
+            <tr><td>Emiratos Árabes Unidos</td><td>Próximamente</td><td>—</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="notice">Fuera de la UE, los aranceles e impuestos de importación se muestran y se cobran al pagar, para que no haya sorpresas en la entrega.</p>
+    <div class="block two">
+      <div class="stack"><h2>Devoluciones</h2></div>
+      <div class="prose">
+        <p>Tienes <strong>30 días</strong> desde la entrega para devolver cualquier pieza sin usar y con su etiqueta. En España la devolución es gratuita; en el resto de destinos, el coste del envío de vuelta se descuenta del reembolso.</p>
+        <p>El reembolso se hace al mismo medio de pago en un máximo de 14 días desde que recibimos la pieza.</p>
+      </div>
+    </div>
+    <hr class="rule">
+    <div class="block">
+      <div class="head-split"><h2>Guía de tallas</h2><p class="lede">Medidas del cuerpo en centímetros. Si estás entre dos tallas, elige la mayor en americanas y la menor en jerseys.</p></div>
+      <div class="stack" style="gap:32px">
+        <div class="stack"><h3>Mujer · ropa</h3><div class="tbl-wrap"><table>
+          <thead><tr><th>Talla</th><th>34</th><th>36</th><th>38</th><th>40</th><th>42</th><th>44</th></tr></thead>
+          <tbody><tr><td>Pecho</td><td>80</td><td>84</td><td>88</td><td>92</td><td>98</td><td>104</td></tr>
+          <tr><td>Cintura</td><td>62</td><td>66</td><td>70</td><td>74</td><td>80</td><td>86</td></tr>
+          <tr><td>Cadera</td><td>88</td><td>92</td><td>96</td><td>100</td><td>106</td><td>112</td></tr></tbody></table></div></div>
+        <div class="stack"><h3>Hombre · ropa</h3><div class="tbl-wrap"><table>
+          <thead><tr><th>Talla</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>XXL</th></tr></thead>
+          <tbody><tr><td>Pecho</td><td>92–96</td><td>100–104</td><td>108–112</td><td>116–120</td><td>124–128</td></tr>
+          <tr><td>Cuello (camisa)</td><td>38</td><td>40</td><td>42</td><td>44</td><td>46</td></tr>
+          <tr><td>Americana (IT)</td><td>46</td><td>48</td><td>50</td><td>52</td><td>54</td></tr></tbody></table></div></div>
+        <div class="stack"><h3>Calzado</h3><div class="tbl-wrap"><table>
+          <thead><tr><th>EU</th><th>36</th><th>37</th><th>38</th><th>39</th><th>40</th><th>41</th><th>42</th><th>43</th><th>44</th><th>45</th></tr></thead>
+          <tbody><tr><td>Largo del pie</td><td>23,0</td><td>23,7</td><td>24,3</td><td>25,0</td><td>25,7</td><td>26,3</td><td>27,0</td><td>27,7</td><td>28,3</td><td>29,0</td></tr>
+          <tr><td>UK</td><td>3</td><td>4</td><td>5</td><td>5,5</td><td>6,5</td><td>7</td><td>8</td><td>9</td><td>9,5</td><td>10,5</td></tr></tbody></table></div></div>
+      </div>
+    </div>
+    <hr class="rule">
+    <div class="block two">
+      <div class="stack"><h2>Preguntas frecuentes</h2></div>
+      <div>
+        <details class="acc"><summary>¿Qué es el pre-order?</summary><div class="in"><p>Reservas y pagas la pieza antes de que se fabrique. Así producimos solo lo que se ha pedido y tú tienes tu talla asegurada.</p></div></details>
+        <details class="acc"><summary>¿Puedo cancelar una reserva?</summary><div class="in"><p>Sí, sin coste, hasta que la serie entra en producción. Te avisamos por correo antes de esa fecha.</p></div></details>
+        <details class="acc"><summary>¿Qué medios de pago aceptáis?</summary><div class="in"><p>Tarjeta (Visa, Mastercard, American Express), PayPal, Apple Pay y Google Pay. En Senegal, también Wave y Orange Money.</p></div></details>
+        <details class="acc"><summary>¿Tenéis tienda física?</summary><div class="in"><p>De momento vendemos online. Podrás ver la colección con cita previa en nuestro showroom de Granada.</p></div></details>
+        <details class="acc"><summary>¿Cómo cuido el forro de wax?</summary><div class="in"><p>La americana va a tintorería. El wax mantiene el color, pero conviene no dejarla al sol directo durante horas.</p></div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="view" data-view="contacto" hidden>
+  <div class="wrap">
+    <div class="page-head">
+      <p class="caps">Contacto</p>
+      <h1>Hablemos.</h1>
+      <p class="lede">Te respondemos en un día laborable, en español, francés, inglés o wolof.</p>
+    </div>
+    <div class="two block" style="padding-top:24px">
+      <div class="stack">
+        <div class="stack" style="gap:6px"><p class="caps">Atención al cliente</p><p>clientes@kassenzorovie.com</p><p class="muted">Lunes a viernes, 9:00–18:00 (hora de Madrid)</p></div>
+        <div class="stack" style="gap:6px"><p class="caps">Showroom</p><p>Granada, España</p><p class="muted">Visitas con cita previa</p></div>
+        <div class="stack" style="gap:6px"><p class="caps">Prensa y colaboraciones</p><p>press@kassenzorovie.com</p></div>
+        <div class="stack" style="gap:6px"><p class="caps">Redes</p><p>@kassenzorovie</p></div>
+      </div>
+      <form class="f" id="contact-form" novalidate>
+        <div class="row2">
+          <div class="field"><label for="c-name">Nombre</label><input id="c-name" autocomplete="name"></div>
+          <div class="field"><label for="c-email">Correo electrónico</label><input id="c-email" type="email" autocomplete="email"></div>
+        </div>
+        <div class="field"><label for="c-topic">Motivo</label>
+          <select id="c-topic"><option>Pedido o pre-order</option><option>Tallas y producto</option><option>Devolución</option><option>Reparación de calzado</option><option>Programa Teranga</option><option>Prensa y colaboraciones</option><option>Otro</option></select></div>
+        <div class="field"><label for="c-order">Número de pedido (opcional)</label><input id="c-order" placeholder="KR-0000"></div>
+        <div class="field"><label for="c-msg">Mensaje</label><textarea id="c-msg"></textarea></div>
+        <label class="check" for="c-ok"><input type="checkbox" id="c-ok"> He leído la política de privacidad.</label>
+        <button class="btn solid" type="submit" id="c-submit">Enviar mensaje</button>
+        <p class="msg" id="c-msg-out" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- BOLSA -->
+<section class="view" data-view="bolsa" hidden>
+  <div class="wrap">
+    <div class="page-head"><p class="caps">Tu bolsa</p><h1>Reservas en pre-order.</h1></div>
+    <div class="two" style="grid-template-columns:7fr 5fr">
+      <div class="stack" style="gap:24px">
+        <div class="bag-list" id="bag-list"></div>
+        <p class="muted" id="bag-empty" hidden>Tu bolsa está vacía. Elige una pieza en <a href="#mujer">Mujer</a> o <a href="#hombre">Hombre</a> y resérvala aquí.</p>
+      </div>
+      <div class="stack" style="gap:20px">
+        <div class="summary">
+          <div class="ln"><span>Subtotal</span><span id="s-sub">0 €</span></div>
+          <div class="ln"><span>Envío</span><span id="s-ship">—</span></div>
+          <div class="ln muted" style="font-size:.86rem"><span>Al Programa Teranga (3 %)</span><span id="s-ter">0 €</span></div>
+          <div class="ln total"><span>Total</span><span id="s-total">0 €</span></div>
+        </div>
+        <form class="f" id="checkout" novalidate>
+          <div class="field"><label for="k-country">País de envío</label>
+            <select id="k-country"><option value="ES">España</option><option value="FR">Francia</option><option value="IT">Italia</option><option value="MA">Marruecos</option><option value="SN">Senegal</option></select></div>
+          <div class="row2">
+            <div class="field"><label for="k-name">Nombre y apellidos</label><input id="k-name" autocomplete="name"></div>
+            <div class="field"><label for="k-email">Correo electrónico</label><input id="k-email" type="email" autocomplete="email"></div>
+          </div>
+          <button class="btn solid" type="submit" id="k-submit">Confirmar reserva</button>
+          <p class="msg" id="k-msg" role="status"></p>
+          <p class="notice">Versión de demostración: no se realiza ningún cobro ni se guarda ningún dato.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEGAL -->
+<section class="view" data-view="legal" hidden>
+  <div class="wrap">
+    <div class="page-head"><p class="caps">Información legal</p><h1>Aviso legal, privacidad y cookies.</h1></div>
+    <div class="prose" style="padding-bottom:24px">
+      <h3>Aviso legal</h3>
+      <p>Este sitio web pertenece a Kassenzo Rovié S.L. (sociedad unipersonal), con domicilio social en Granada, España. Contacto: clientes@kassenzorovie.com.</p>
+      <h3>Condiciones de venta</h3>
+      <p>Los precios incluyen IVA para envíos dentro de la Unión Europea. Las piezas en pre-order se pagan al reservar y se entregan en el plazo indicado en la ficha. Tienes derecho a desistir de la compra en 14 días desde la entrega, ampliados por la casa a 30 días.</p>
+      <h3>Privacidad</h3>
+      <p>Usamos tus datos solo para gestionar tus pedidos, responder a tus mensajes y, si lo pides, enviarte novedades de la casa. No los vendemos ni los cedemos a terceros salvo a la empresa de transporte que entrega tu pedido. Puedes pedir acceso, rectificación o supresión escribiendo a clientes@kassenzorovie.com.</p>
+      <h3>Cookies</h3>
+      <p>Usamos cookies técnicas necesarias para que la bolsa funcione. Las cookies de análisis solo se activan si las aceptas.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <span class="kr" style="width:54px"><i></i><b style="font-size:1.7rem">K<em>R</em></b><i></i></span>
+        <p style="margin-top:16px;max-width:38ch">Recibe antes que nadie las nuevas series y la fecha de cada pre-order.</p>
+        <form class="news" id="news" novalidate>
+          <label for="n-email" class="caps" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Correo electrónico</label>
+          <input id="n-email" type="email" placeholder="Tu correo electrónico" autocomplete="email">
+          <button type="submit">Suscribirme</button>
+        </form>
+      </div>
+      <div><p class="caps">Comprar</p><ul><li><a href="#mujer">Mujer</a></li><li><a href="#hombre">Hombre</a></li><li><a href="#KR-M10">Mocasín de bocado</a></li><li><a href="#KR-H10">Penny loafer</a></li></ul></div>
+      <div><p class="caps">Maison</p><ul><li><a href="#maison">Historia</a></li><li><a href="#atelier">Atelier</a></li><li><a href="#teranga">Programa Teranga</a></li></ul></div>
+      <div><p class="caps">Ayuda</p><ul><li><a href="#servicio">Envíos y devoluciones</a></li><li><a href="#servicio">Guía de tallas</a></li><li><a href="#contacto">Contacto</a></li></ul></div>
+    </div>
+    <div class="legal-row"><span>© 2026 Kassenzo Rovié S.L. · Granada</span><nav aria-label="Legal"><a href="#legal">Aviso legal</a><a href="#legal">Privacidad</a><a href="#legal">Cookies</a></nav></div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ---------- Ilustraciones ---------- */
+const SVG = {
+  camisa: c => `<svg viewBox="0 0 100 110"><path class="s" fill="${c}" d="M35 8 L50 22 L65 8 L88 20 L96 46 L82 50 L80 102 L20 102 L18 50 L4 46 L12 20 Z"/><path class="d" d="M50 22 V102 M35 8 L42 30 L50 22 L58 30 L65 8"/><circle cx="50" cy="44" r="1.4" fill="rgba(0,0,0,.35)"/><circle cx="50" cy="62" r="1.4" fill="rgba(0,0,0,.35)"/><circle cx="50" cy="80" r="1.4" fill="rgba(0,0,0,.35)"/></svg>`,
+  blusa: c => `<svg viewBox="0 0 100 110"><path class="s" fill="${c}" d="M36 8 Q50 16 64 8 L86 18 L98 70 L84 72 L78 40 L80 102 L20 102 L22 40 L16 72 L2 70 L14 18 Z"/><path class="d" d="M36 8 Q42 22 50 30 Q58 22 64 8 M50 30 V60"/><path class="d" d="M50 30 Q44 40 40 36 M50 30 Q56 40 60 36"/></svg>`,
+  polo: c => `<svg viewBox="0 0 100 110"><path class="s" fill="${c}" d="M36 10 L50 18 L64 10 L88 22 L96 46 L80 50 L80 102 L20 102 L20 50 L4 46 L12 22 Z"/><path class="d" d="M42 12 L50 34 L58 12 M50 18 V44"/><circle cx="50" cy="28" r="1.3" fill="rgba(0,0,0,.35)"/><circle cx="50" cy="38" r="1.3" fill="rgba(0,0,0,.35)"/></svg>`,
+  americana: c => `<svg viewBox="0 0 100 110"><path class="s" fill="${c}" d="M34 6 L50 14 L66 6 L90 18 L96 100 L4 100 L10 18 Z"/><path fill="#c25a2c" opacity=".85" d="M44 46 L50 70 L56 46 L50 14 Z"/><path fill="none" stroke="#e8c15a" stroke-width="1" d="M47 30 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 M47 48 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0"/><path class="d" d="M34 6 L44 46 L50 70 L56 46 L66 6 M44 46 L36 40 M56 46 L64 40 M50 70 V100 M66 62 H80"/><circle cx="50" cy="78" r="1.6" fill="rgba(0,0,0,.4)"/></svg>`,
+  pantalon: c => `<svg viewBox="0 0 100 110"><path class="s" fill="${c}" d="M22 6 H78 L84 104 H58 L50 34 L42 104 H16 Z"/><path class="d" d="M22 14 H78 M36 14 V30 M64 14 V30 M50 14 V34"/></svg>`,
+  vestido: c => `<svg viewBox="0 0 100 110"><path class="s" fill="${c}" d="M38 4 L42 22 Q50 28 58 22 L62 4 L70 8 L64 36 L90 104 H10 L36 36 L30 8 Z"/><path class="d" d="M36 36 Q50 42 64 36"/></svg>`,
+  camisero: c => `<svg viewBox="0 0 100 110"><path class="s" fill="${c}" d="M36 6 L50 16 L64 6 L84 16 L92 40 L80 44 L74 40 L76 52 L88 104 H12 L24 52 L26 40 L20 44 L8 40 L16 16 Z"/><path class="d" d="M50 16 V104 M36 6 L42 24 L50 16 L58 24 L64 6 M24 52 H76"/></svg>`,
+  jersey: c => `<svg viewBox="0 0 100 110"><path class="s" fill="${c}" d="M36 8 Q50 18 64 8 L88 18 L98 86 L86 88 L80 40 L80 102 L20 102 L20 40 L14 88 L2 86 L12 18 Z"/><path class="d" d="M36 8 Q50 26 64 8 M20 94 H80 M2 80 L14 82 M98 80 L86 82"/></svg>`,
+  pico: c => `<svg viewBox="0 0 100 110"><path class="s" fill="${c}" d="M36 8 L50 34 L64 8 L88 18 L98 86 L86 88 L80 40 L80 102 L20 102 L20 40 L14 88 L2 86 L12 18 Z"/><path class="d" d="M36 8 L50 38 L64 8 M20 94 H80 M2 80 L14 82 M98 80 L86 82"/></svg>`,
+  cardigan: c => `<svg viewBox="0 0 100 110"><path class="s" fill="${c}" d="M36 8 L50 40 L64 8 L88 18 L98 86 L86 88 L80 40 L80 102 L20 102 L20 40 L14 88 L2 86 L12 18 Z"/><path class="d" d="M36 8 L50 40 L64 8 M50 40 V102 M20 94 H80"/><circle cx="53" cy="52" r="1.5" fill="rgba(0,0,0,.4)"/><circle cx="53" cy="66" r="1.5" fill="rgba(0,0,0,.4)"/><circle cx="53" cy="80" r="1.5" fill="rgba(0,0,0,.4)"/></svg>`,
+  bocado: c => `<svg viewBox="0 0 120 70"><path class="s" fill="${c}" d="M6 46 Q8 30 34 28 Q52 20 74 22 Q100 24 112 40 Q116 50 104 54 H14 Q4 54 6 46 Z"/><path class="d" d="M44 26 Q60 38 84 26"/><path fill="#2a1c12" d="M14 54 V59 H106 V54 Z"/><circle class="g" cx="53" cy="31" r="3.4"/><circle class="g" cx="77" cy="31" r="3.4"/><path class="g" d="M56.4 31 H73.6"/><text class="gt" x="65" y="29" font-size="5.4" text-anchor="middle" font-family="Bodoni Moda, Georgia, serif" font-style="italic">KR</text></svg>`,
+  penny: c => `<svg viewBox="0 0 120 70"><path class="s" fill="${c}" d="M6 46 Q8 30 34 28 Q52 20 74 22 Q100 24 112 40 Q116 50 104 54 H14 Q4 54 6 46 Z"/><path class="d" d="M44 26 Q60 40 84 26 M48 31 H80 V37 H48 Z M60 34 Q64 31.5 68 34"/><path fill="#1f1610" d="M14 54 V59 H106 V54 Z"/></svg>`
+};
+
+/* ---------- Catálogo (Colección I) ---------- */
+const C = {
+  blanco: ['Blanco', '#f2f0ea'], cielo: ['Azul cielo', '#b9cfe0'], marfil: ['Marfil', '#e8e0cc'], marino: ['Azul marino', '#26324a'],
+  arena: ['Arena', '#cdb894'], camel: ['Camel', '#b1834f'], verde: ['Verde inglés', '#2f4a3a'], negro: ['Negro', '#1b1b1d'],
+  choco: ['Marrón chocolate', '#4a2c1d'], cuero: ['Cuero', '#8a5530'], burdeos: ['Burdeos', '#5e1f26'], terra: ['Terracota', '#a8553a'],
+  gris: ['Gris perla', '#bfbfbb'], oliva: ['Oliva', '#6d6a44'], rayas: ['Raya azul', '#9fb4cc']
+};
+const SZ = { w: ['34','36','38','40','42','44'], m: ['S','M','L','XL','XXL'], ws: ['36','37','38','39','40','41'], ms: ['40','41','42','43','44','45'], it: ['46','48','50','52','54'] };
+const P = [
+  { id:'KR-M01', g:'mujer', cat:'Camisas', name:'Camisa Riviera', price:145, svg:'camisa', colors:['blanco','cielo','rayas'], sizes:SZ.w, d:'Camisa de popelín de algodón con cuello clásico y puño de dos botones. Corte recto, para llevar por dentro o por fuera.', mat:'100 % algodón popelín', orig:'Confeccionada en Guimarães, Portugal', det:'Botones de nácar y monograma KR bordado en tono sobre tono en el puño izquierdo.', care:'Lavar a 30 °C. Planchar a temperatura media.' },
+  { id:'KR-M02', g:'mujer', cat:'Camisas', name:'Blusa Gorée', price:185, svg:'blusa', colors:['marfil','burdeos'], sizes:SZ.w, d:'Blusa fluida con lazada al cuello y manga amplia con puño. El nombre viene de la isla frente a Dakar.', mat:'100 % seda crepé de China', orig:'Confeccionada en Portugal', det:'Lazada desmontable para llevarla también con cuello abierto.', care:'Lavar a mano en frío o tintorería.' },
+  { id:'KR-M03', g:'mujer', cat:'Polos', name:'Polo Saly', price:115, svg:'polo', colors:['blanco','marino','verde'], sizes:SZ.w, d:'Polo de punto piqué fino, entallado, con tapeta de dos botones. Saly es la costa de Senegal al sur de Dakar.', mat:'100 % algodón piqué', orig:'Confeccionado en Portugal', det:'Firma KR bordada en el pecho, del tamaño de un botón.', care:'Lavar a 30 °C del revés.' },
+  { id:'KR-M04', g:'mujer', cat:'Americanas', name:'Americana Marbella', price:420, svg:'americana', colors:['marino','arena','negro'], sizes:SZ.w, d:'Americana de una botonadura con hombro natural y largo a la cadera. Por dentro, forro de wax senegalés.', mat:'Lana fría 100 %. Forro: wax de algodón', orig:'Confeccionada en Biella, Italia. Forro hecho en Dakar', det:'Cada forro de wax se corta a mano en Dakar; el estampado cambia de una pieza a otra.', care:'Solo tintorería.' },
+  { id:'KR-M05', g:'mujer', cat:'Pantalones', name:'Pantalón Alhambra', price:165, svg:'pantalon', colors:['marfil','marino','camel'], sizes:SZ.w, d:'Pantalón de pinzas, tiro alto y pierna recta, con raya marcada. Va con todo, de la blusa al jersey.', mat:'Lana fría 98 %, elastano 2 %', orig:'Confeccionado en Italia', det:'Cinturilla con botón de cuerno.', care:'Tintorería o lavado a mano en frío.' },
+  { id:'KR-M06', g:'mujer', cat:'Vestidos', name:'Vestido Estoril', price:275, svg:'vestido', colors:['blanco','verde','terra'], sizes:SZ.w, d:'Vestido midi de lino con cintura marcada y escote cuadrado. Para el verano en la costa.', mat:'100 % lino', orig:'Confeccionado en Portugal', det:'Bolsillos laterales ocultos en la costura.', care:'Lavar a 30 °C. Planchar húmedo.' },
+  { id:'KR-M07', g:'mujer', cat:'Vestidos', name:'Vestido camisero Dakar', price:295, svg:'camisero', colors:['cielo','arena'], sizes:SZ.w, d:'Vestido camisero largo con cinturón de la misma tela. Confeccionado de principio a fin en Dakar.', mat:'100 % lino', orig:'Confeccionado en Dakar, Senegal (Programa Teranga)', det:'Etiqueta interior con el nombre del taller que lo ha hecho.', care:'Lavar a 30 °C. Planchar húmedo.' },
+  { id:'KR-M08', g:'mujer', cat:'Jerseys', name:'Jersey Cotswold', price:195, svg:'jersey', colors:['marfil','camel','verde'], sizes:SZ.w, d:'Jersey de cuello caja en merino fino, de los que se ponen sobre los hombros o con americana.', mat:'100 % lana merino extrafina', orig:'Tejido en Portugal', det:'Puños y bajo de canalé fino.', care:'Lavar a mano en frío y secar en plano.' },
+  { id:'KR-M09', g:'mujer', cat:'Jerseys', name:'Cárdigan Ascot', price:210, svg:'cardigan', colors:['marfil','marino'], sizes:SZ.w, d:'Cárdigan de punto con escote de pico y botones de nácar.', mat:'Lana merino 70 %, cachemir 30 %', orig:'Tejido en Portugal', det:'Botones de nácar grabados con la K.', care:'Lavar a mano en frío y secar en plano.' },
+  { id:'KR-M10', g:'mujer', cat:'Calzado', name:'Mocasín de bocado Rovié', price:295, svg:'bocado', colors:['choco'], sizes:SZ.ws, d:'La pieza de la casa para mujer. Mocasín de bocado en piel de becerro marrón chocolate, con la firma KR en el bocado.', mat:'Piel de becerro. Forro de piel. Suela de cuero cosida', orig:'Fabricado en Elche, España', det:'Bocado de latón con acabado oro viejo y la KR grabada en el centro. Suela cosida que se puede cambiar.', care:'Crema nutritiva una vez al mes. Hormas de cedro al guardarlos.' },
+  { id:'KR-H01', g:'hombre', cat:'Camisas', name:'Camisa Oxford Rovié', price:135, svg:'camisa', colors:['blanco','cielo'], sizes:SZ.m, d:'Camisa oxford con cuello abotonado y pliegue en la espalda. La base del armario.', mat:'100 % algodón oxford', orig:'Confeccionada en Guimarães, Portugal', det:'Firma KR bordada en el faldón, donde no se ve.', care:'Lavar a 40 °C.' },
+  { id:'KR-H02', g:'hombre', cat:'Camisas', name:'Camisa Casamance', price:145, svg:'camisa', colors:['marfil','oliva','cielo'], sizes:SZ.m, d:'Camisa de lino con cuello italiano. Lleva el nombre de la región verde del sur de Senegal.', mat:'100 % lino', orig:'Confeccionada en Portugal', det:'Botones de corozo natural.', care:'Lavar a 30 °C. Planchar húmedo.' },
+  { id:'KR-H03', g:'hombre', cat:'Polos', name:'Polo Portofino', price:110, svg:'polo', colors:['blanco','marino','verde'], sizes:SZ.m, d:'Polo de piqué fino con tres botones y cuello que se mantiene firme.', mat:'100 % algodón piqué', orig:'Confeccionado en Portugal', det:'Firma KR bordada en el pecho.', care:'Lavar a 30 °C del revés.' },
+  { id:'KR-H04', g:'hombre', cat:'Polos', name:'Polo de punto Saint-Louis', price:150, svg:'polo', colors:['marfil','camel'], sizes:SZ.m, d:'Polo de punto de manga larga con cuello abierto. Saint-Louis, la antigua capital de Senegal.', mat:'Algodón 80 %, seda 20 %', orig:'Tejido en Portugal', det:'Cuello sin botones, de punto en una sola pieza.', care:'Lavar a mano en frío.' },
+  { id:'KR-H05', g:'hombre', cat:'Americanas', name:'Americana Kassenzo', price:450, svg:'americana', colors:['marino','arena','verde'], sizes:SZ.it, d:'Americana de dos botones sin hombreras, ligera y sin estructura rígida. Forro de wax senegalés.', mat:'Lana 55 %, lino 45 %. Forro: wax de algodón', orig:'Confeccionada en Biella, Italia. Forro hecho en Dakar', det:'El forro de wax se corta a mano en Dakar: no hay dos iguales.', care:'Solo tintorería.' },
+  { id:'KR-H06', g:'hombre', cat:'Pantalones', name:'Pantalón Sierra', price:150, svg:'pantalon', colors:['arena','marino','oliva'], sizes:SZ.m, d:'Chino de pinza simple, pierna recta y bajo sin vuelta. Lleva el nombre de Sierra Nevada.', mat:'Algodón 98 %, elastano 2 %', orig:'Confeccionado en Portugal', det:'Ajustadores laterales para llevarlo sin cinturón.', care:'Lavar a 30 °C.' },
+  { id:'KR-H07', g:'hombre', cat:'Pantalones', name:'Pantalón de lino Gorée', price:165, svg:'pantalon', colors:['marfil','arena'], sizes:SZ.m, d:'Pantalón de lino con cintura de cordón interior y pinzas. Para el verano en la ciudad.', mat:'100 % lino', orig:'Confeccionado en Dakar, Senegal (Programa Teranga)', det:'Etiqueta interior con el nombre del taller que lo ha hecho.', care:'Lavar a 30 °C.' },
+  { id:'KR-H08', g:'hombre', cat:'Jerseys', name:'Jersey Estate', price:185, svg:'pico', colors:['verde','burdeos','camel'], sizes:SZ.m, d:'Jersey de cuello en pico en lambswool, para llevar sobre camisa oxford.', mat:'100 % lambswool', orig:'Tejido en Portugal', det:'Coderas de punto reforzado por dentro.', care:'Lavar a mano en frío y secar en plano.' },
+  { id:'KR-H09', g:'hombre', cat:'Jerseys', name:'Jersey Cotswold', price:195, svg:'jersey', colors:['marfil','marino'], sizes:SZ.m, d:'Jersey de cuello caja en merino fino. El mismo de mujer, con patrón de hombre.', mat:'100 % lana merino extrafina', orig:'Tejido en Portugal', det:'Puños y bajo de canalé fino.', care:'Lavar a mano en frío y secar en plano.' },
+  { id:'KR-H10', g:'hombre', cat:'Calzado', name:'Penny loafer Kassenzo', price:275, svg:'penny', colors:['cuero','burdeos','negro'], sizes:SZ.ms, d:'La pieza de la casa para hombre. Penny loafer clásico, limpio, sin herraje.', mat:'Piel de becerro. Forro de piel. Suela de cuero cosida', orig:'Fabricado en Elche, España', det:'Antifaz cosido a mano. Suela cosida que se puede cambiar en nuestro servicio de reparación.', care:'Crema nutritiva una vez al mes. Hormas de cedro al guardarlos.' }
+];
+const byId = Object.fromEntries(P.map(p => [p.id, p]));
+const eur = n => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
+const esc = s => String(s).replace(/[&<>"]/g, ch => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' })[ch]);
+
+function plate(p, colorKey, extra = '') {
+  const hex = C[colorKey || p.colors[0]][1];
+  return `${SVG[p.svg](hex)}<span class="ref">${p.id}</span>${extra}`;
+}
+function card(p) {
+  return `<a class="card" href="#${p.id}">
+    <div class="plate">${plate(p, null, '<span class="badge">Pre-order</span>')}</div>
+    <div class="meta"><h3>${esc(p.name)}</h3><span class="price">${eur(p.price)}</span></div>
+    <div class="meta"><span class="sub">${esc(p.cat)}</span><span class="swatches">${p.colors.map(k => `<span class="sw" title="${C[k][0]}" style="background:${C[k][1]}"></span>`).join('')}</span></div>
+  </a>`;
+}
+document.querySelectorAll('[data-plate]').forEach(el => { const p = byId[el.dataset.plate]; el.innerHTML = plate(p); });
+document.getElementById('home-grid').innerHTML = ['KR-M01','KR-M04','KR-M07','KR-H05','KR-H02','KR-H08','KR-M02','KR-H06'].map(id => card(byId[id])).join('');
+
+/* ---------- Bolsa ---------- */
+let bag = [];
+try { bag = JSON.parse(localStorage.getItem('kr-bag') || '[]').filter(i => byId[i.id]); } catch (e) { bag = []; }
+const saveBag = () => { try { localStorage.setItem('kr-bag', JSON.stringify(bag)); } catch (e) {} updateCount(); };
+function updateCount() { document.getElementById('bag-count').textContent = bag.reduce((a, i) => a + i.q, 0); }
+const SHIP = { ES: [6, 200], FR: [12, 300], IT: [12, 300], MA: [18, 400], SN: [22, 400] };
+function renderBag() {
+  const list = document.getElementById('bag-list');
+  document.getElementById('bag-empty').hidden = bag.length > 0;
+  list.innerHTML = bag.map((i, n) => { const p = byId[i.id]; return `<div class="bag-item">
+    <div class="plate">${SVG[p.svg](C[i.c][1])}</div>
+    <div><a href="#${p.id}" style="text-decoration:none"><h4>${esc(p.name)}</h4></a><small>${C[i.c][0]} · Talla ${esc(i.s)}</small><small>Envío estimado en 6 semanas</small>
+      <div><span class="qty"><button type="button" data-dec="${n}" aria-label="Quitar una unidad">−</button><span>${i.q}</span><button type="button" data-inc="${n}" aria-label="Añadir una unidad">+</button></span><button type="button" class="rm" data-rm="${n}">Eliminar</button></div></div>
+    <span class="price">${eur(p.price * i.q)}</span></div>`; }).join('');
+  const sub = bag.reduce((a, i) => a + byId[i.id].price * i.q, 0);
+  const [cost, free] = SHIP[document.getElementById('k-country').value];
+  const ship = sub === 0 ? 0 : (sub >= free ? 0 : cost);
+  document.getElementById('s-sub').textContent = eur(sub);
+  document.getElementById('s-ship').textContent = sub === 0 ? '—' : (ship === 0 ? 'Gratis' : eur(ship));
+  document.getElementById('s-ter').textContent = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(sub * 0.03);
+  document.getElementById('s-total').textContent = eur(sub + ship);
+  document.getElementById('k-submit').disabled = bag.length === 0;
+}
+document.getElementById('bag-list').addEventListener('click', e => {
+  const t = e.target;
+  if (t.dataset.inc) bag[+t.dataset.inc].q++;
+  else if (t.dataset.dec) { const i = bag[+t.dataset.dec]; i.q--; if (i.q < 1) bag.splice(+t.dataset.dec, 1); }
+  else if (t.dataset.rm) bag.splice(+t.dataset.rm, 1);
+  else return;
+  saveBag(); renderBag();
+});
+document.getElementById('k-country').addEventListener('change', renderBag);
+document.getElementById('checkout').addEventListener('submit', e => {
+  e.preventDefault();
+  const out = document.getElementById('k-msg'); out.classList.remove('err');
+  const name = document.getElementById('k-name').value.trim(), em = document.getElementById('k-email');
+  if (!name) { out.textContent = 'Escribe tu nombre para confirmar la reserva.'; out.classList.add('err'); return; }
+  if (!em.value || !em.checkValidity()) { out.textContent = 'Revisa el correo: falta o no tiene un formato válido.'; out.classList.add('err'); return; }
+  const n = 'KR-' + String(Math.floor(1000 + Math.random() * 9000));
+  out.textContent = `Reserva ${n} confirmada, ${name}. Te avisaremos por correo cuando tu serie entre en producción.`;
+  bag = []; saveBag(); renderBag();
+});
+
+/* ---------- Colección ---------- */
+const CATS = ['Todo','Camisas','Polos','Americanas','Pantalones','Vestidos','Jerseys','Calzado'];
+let colState = { g: 'mujer', cat: 'Todo', sort: 'dest' };
+try { const s = JSON.parse(localStorage.getItem('kr-col') || '{}'); if (s.sort) colState.sort = s.sort; } catch (e) {}
+function renderCol() {
+  const { g, cat, sort } = colState;
+  const cats = CATS.filter(c => c === 'Todo' || P.some(p => p.g === g && p.cat === c));
+  if (!cats.includes(cat)) colState.cat = 'Todo';
+  document.getElementById('cat-chips').innerHTML = cats.map(c => `<button type="button" id="chip-${c}" data-cat="${c}" aria-pressed="${c === colState.cat}">${c}</button>`).join('');
+  let list = P.filter(p => p.g === g && (colState.cat === 'Todo' || p.cat === colState.cat));
+  if (sort === 'asc') list = [...list].sort((a, b) => a.price - b.price);
+  if (sort === 'desc') list = [...list].sort((a, b) => b.price - a.price);
+  document.getElementById('col-grid').innerHTML = list.map(card).join('');
+  document.getElementById('sort-sel').value = sort;
+}
+document.getElementById('cat-chips').addEventListener('click', e => { if (e.target.dataset.cat) { colState.cat = e.target.dataset.cat; renderCol(); } });
+document.getElementById('sort-sel').addEventListener('change', e => { colState.sort = e.target.value; try { localStorage.setItem('kr-col', JSON.stringify({ sort: colState.sort })); } catch (err) {} renderCol(); });
+const COL_TEXT = {
+  mujer: ['Mujer', 'Camisas y blusas, polo, americana con forro de wax, pantalón de pinzas, dos vestidos, punto fino y el mocasín de bocado de la casa.'],
+  hombre: ['Hombre', 'Oxford y lino, polos, americana con forro de wax, chinos y lino, jerseys de lambswool y merino, y el penny loafer de la casa.']
+};
+
+/* ---------- Ficha de producto ---------- */
+let pdp = { p: null, c: null, s: null };
+function renderPdp(p) {
+  pdp = { p, c: p.colors[0], s: null };
+  const gName = p.g === 'mujer' ? 'Mujer' : 'Hombre';
+  document.getElementById('pdp-crumbs').innerHTML = `<a href="#inicio">Inicio</a> / <a href="#${p.g}">${gName}</a> / ${esc(p.name)}`;
+  document.getElementById('pdp-cat').textContent = `${gName} · ${p.cat}`;
+  document.getElementById('pdp-name').textContent = p.name;
+  document.getElementById('pdp-price').textContent = eur(p.price);
+  document.getElementById('pdp-desc').textContent = p.d;
+  document.getElementById('pdp-facts').innerHTML = `<dt>Referencia</dt><dd>${p.id}</dd><dt>Composición</dt><dd>${esc(p.mat)}</dd><dt>Origen</dt><dd>${esc(p.orig)}</dd><dt>Teranga</dt><dd>${new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(p.price * 0.03)} de esta pieza van al programa</dd>`;
+  document.getElementById('pdp-detail').innerHTML = `<p>${esc(p.det)}</p>`;
+  document.getElementById('pdp-care').innerHTML = `<p>${esc(p.care)}</p>`;
+  document.getElementById('pdp-colors').innerHTML = p.colors.map(k => `<button type="button" id="col-${k}" data-c="${k}" aria-pressed="${k === pdp.c}"><span class="sw" style="background:${C[k][1]}"></span>${C[k][0]}</button>`).join('');
+  document.getElementById('pdp-sizes').innerHTML = p.sizes.map(s => `<button type="button" id="size-${s}" data-s="${s}" aria-pressed="false">${s}</button>`).join('');
+  document.getElementById('pdp-msg').textContent = '';
+  const rel = P.filter(x => x.g === p.g && x.id !== p.id && x.cat !== p.cat).slice(0, 4);
+  document.getElementById('pdp-related').innerHTML = rel.map(card).join('');
+  drawGallery();
+}
+function drawGallery() {
+  const p = pdp.p;
+  const note = p.svg === 'americana' ? 'Forro de wax cortado a mano en Dakar.' : p.svg === 'bocado' ? 'Bocado de latón con la firma KR.' : p.cat === 'Calzado' ? 'Suela de cuero cosida, reparable.' : esc(p.orig.split('(')[0]) + '.';
+  document.getElementById('pdp-gallery').innerHTML = `<div class="plate">${plate(p, pdp.c)}</div><div class="plate">${SVG[p.svg](C[pdp.c][1])}</div><div class="plate"><p class="detail-note">${note}</p></div>`;
+  document.getElementById('pdp-color-name').textContent = C[pdp.c][0];
+}
+document.getElementById('pdp-colors').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  pdp.c = b.dataset.c;
+  document.querySelectorAll('#pdp-colors button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  drawGallery();
+});
+document.getElementById('pdp-sizes').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  pdp.s = b.dataset.s;
+  document.querySelectorAll('#pdp-sizes button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  document.getElementById('pdp-msg').textContent = '';
+});
+document.getElementById('pdp-add').addEventListener('click', () => {
+  const out = document.getElementById('pdp-msg'); out.classList.remove('err');
+  if (!pdp.s) { out.textContent = 'Elige una talla para reservar.'; out.classList.add('err'); return; }
+  const ex = bag.find(i => i.id === pdp.p.id && i.c === pdp.c && i.s === pdp.s);
+  if (ex) ex.q++; else bag.push({ id: pdp.p.id, c: pdp.c, s: pdp.s, q: 1 });
+  saveBag();
+  out.innerHTML = `Añadido a tu bolsa: ${esc(pdp.p.name)}, ${C[pdp.c][0]}, talla ${pdp.s}. <a href="#bolsa">Ver bolsa</a>`;
+  toast('Añadido a la bolsa');
+});
+
+/* ---------- Formularios simples ---------- */
+function toast(t) { const el = document.getElementById('toast'); el.textContent = t; el.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove('show'), 2400); }
+document.getElementById('news').addEventListener('submit', e => {
+  e.preventDefault(); const em = document.getElementById('n-email');
+  if (!em.value || !em.checkValidity()) { toast('Escribe un correo válido para suscribirte'); return; }
+  em.value = ''; toast('Suscripción confirmada. Te escribiremos con la próxima serie.');
+});
+document.getElementById('contact-form').addEventListener('submit', e => {
+  e.preventDefault(); const out = document.getElementById('c-msg-out'); out.classList.remove('err');
+  const name = document.getElementById('c-name').value.trim(), em = document.getElementById('c-email'), msg = document.getElementById('c-msg').value.trim();
+  if (!name || !msg) { out.textContent = 'Completa tu nombre y el mensaje.'; out.classList.add('err'); return; }
+  if (!em.value || !em.checkValidity()) { out.textContent = 'Revisa el correo: falta o no tiene un formato válido.'; out.classList.add('err'); return; }
+  if (!document.getElementById('c-ok').checked) { out.textContent = 'Marca la casilla de privacidad para enviar.'; out.classList.add('err'); return; }
+  out.textContent = `Gracias, ${name}. Hemos recibido tu mensaje y te responderemos en un día laborable.`; e.target.reset();
+});
+
+/* ---------- Navegación ---------- */
+const navBtn = document.getElementById('menu-btn'), nav = document.getElementById('nav');
+navBtn.addEventListener('click', () => { const o = nav.classList.toggle('open'); navBtn.setAttribute('aria-expanded', String(o)); });
+function show(view) { document.querySelectorAll('.view').forEach(v => v.hidden = v.dataset.view !== view); }
+function route() {
+  const h = (location.hash || '#inicio').slice(1);
+  nav.classList.remove('open'); navBtn.setAttribute('aria-expanded', 'false');
+  document.querySelectorAll('nav.main a').forEach(a => a.toggleAttribute('aria-current', a.getAttribute('href') === '#' + h));
+  if (document.querySelector('nav.main a[aria-current]')) document.querySelector('nav.main a[aria-current]').setAttribute('aria-current', 'page');
+  if (h === 'mujer' || h === 'hombre') {
+    if (colState.g !== h) colState.cat = 'Todo';
+    colState.g = h;
+    document.getElementById('col-title').textContent = COL_TEXT[h][0];
+    document.getElementById('col-crumb').textContent = COL_TEXT[h][0];
+    document.getElementById('col-lede').textContent = COL_TEXT[h][1];
+    renderCol(); show('coleccion');
+  } else if (byId[h]) { renderPdp(byId[h]); show('producto'); }
+  else if (h === 'bolsa') { renderBag(); show('bolsa'); }
+  else if (document.querySelector(`.view[data-view="${h}"]`)) show(h);
+  else show('inicio');
+  window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', route);
+updateCount(); route();
+</script>
+</body>
+</html>
